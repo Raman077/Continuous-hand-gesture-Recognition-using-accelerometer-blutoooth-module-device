@@ -9,7 +9,7 @@ from sklearn.model_selection import GridSearchCV
 
 
 if __name__ == '__main__':
-	#List of parameters
+	
 	SHOW_CONFUSION_MATRIX = False
 
 	x_data = []
@@ -21,14 +21,12 @@ if __name__ == '__main__':
 
 	print "Loading the dataset from '{directory}'...".format(directory=root),
 
-	#Fetch all the data files from the root directory of the dataset
+	
 	for path, subdirs, files in os.walk(root):
 		for name in files:
-			#Get the filename
 			filename = os.path.join(path, name)
-			#Load the sample from file
 			sample = signals.Sample.load_from_file(filename)
-			#Linearize the sample and then add it to the x_data list
+			
 			category = name.split("_")[0]
 			
 			
@@ -42,7 +40,7 @@ if __name__ == '__main__':
 
 	params = {'C':[0.001,0.01,0.1,1], 'kernel':['linear']}
 
-	#Inizialize the model
+	
 	svc = svm.SVC(probability = True)
 	clf = GridSearchCV(svc, params,verbose =10, n_jobs=8)
 
@@ -51,10 +49,10 @@ if __name__ == '__main__':
 
 	print "Starting the training process..."
 
-	#Start the training process
+	
 	clf.fit(X_train, Y_train)
 
-	#If SHOW_CONFUSION_MATRIX is true, prints the confusion matrix
+	
 	if SHOW_CONFUSION_MATRIX:
 		print "Confusion Matrix:"
 		Y_predicted = clf.predict(X_test)
@@ -63,7 +61,7 @@ if __name__ == '__main__':
 	print "\nBest estimator parameters: "
 	print clf.best_estimator_
 	
-	#Calculates the score of the best estimator found.
+	
 	score = clf.score(X_test, Y_test)
 
 	print "\nSCORE: {score}\n".format(score = score)
