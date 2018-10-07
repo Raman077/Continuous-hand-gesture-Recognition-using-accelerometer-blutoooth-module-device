@@ -11,17 +11,13 @@ This is a work in progress....
 
 class Hinter:
 	'''
-	Hinter is used to load a dictionary and obtain some suggestions
-	regarding the next possible letters or compatible words.
-	'''
 	def __init__(self, words):
 		self.words = words
 
 	@staticmethod
 	def load_english_dict():
 		'''
-		Loads the english dictionary and returns a Hinter object with
-		the words loaded into the self.words list
+		
 		'''
 		ENGLISH_FILENAME = "dict" + os.sep + "english.txt"
 		words = [i.replace("\n","") for i in open(ENGLISH_FILENAME)]
@@ -47,8 +43,7 @@ class Hinter:
 	def next_letters(self, word):
 		'''
 		Returns a list of compatible letters.
-		A letter is compatible when there are words that starts with "word"
-		and are followed by the letter.
+		
 		'''
 		#Get 100 compatible words
 		words = self.compatible_words(word, 100)
