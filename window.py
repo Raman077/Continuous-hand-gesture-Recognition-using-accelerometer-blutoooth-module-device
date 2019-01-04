@@ -1,12 +1,6 @@
 from Tkinter import *
 
-'''
-Author: Federico Terzi
 
-This module just display a basic window to show the output of the "start.py" module
-
-This is a work in progress....
-'''
 
 class TextWindow:
 
