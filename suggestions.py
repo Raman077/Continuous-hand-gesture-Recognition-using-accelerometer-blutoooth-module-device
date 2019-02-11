@@ -1,14 +1,4 @@
 import os
-
-'''
-Author: Federico Terzi
-
-This library contains the classes needed to manipulate words and
-obtain suggestions
-
-This is a work in progress....
-'''
-
 class Hinter:
 	'''
 	def __init__(self, words):
